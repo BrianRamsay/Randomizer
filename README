@@ -1,4 +1,69 @@
-Randomizer
+Randomizer, a Javascript class to abstract details of several different random number generators.  
 
-Javascript class to abstract different random number generators.
+Provides a means to test several generators against each other as well as let 
+you ignore implementation details of the particular RNGs and just use them.
 
+To use, include lib/Randomizer.js and you also need to include at least one 
+of the files in  lib/rng/ to use a different RNG from the javascript default.
+
+Randomizer takes two possible options in an object: 'rng' which is a string 
+or appropriate object, and 'seed' which is the seed to begin randomizing with.
+Both are optional.
+
+RNG Options
+-------------------------
+MersenneTwister
+MultiplyWithCarry
+CombinedMultipleRecursive
+
+
+USAGE
+-------------------------
+
+// defaults to Math.random(), but why would we want that?
+var rand = new Randomizer();
+rand.random();
+rand.randomInteger(5, 25); // from 5 to 25 inclusive
+
+// we can use a Mersenne Twister
+var rand = new Randomizer({ rng : 'MersenneTwister'});
+
+// we can provide a seed as well
+var rand = new Randomizer({ rng : 'MultiplyWithCarry', seed : 2349837});
+
+// we can also set the seed after the fact
+var rand = new Randomizer({ rng : 'CombinedMultipleRecursive'});
+rand.setSeed(23423433);
+
+
+LICENSE
+-------------------------
+2 clause BSD - RNG implementations retain their original licenses, where applicable
+
+Copyright (c) 2011, Brian Ramsay
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+CREDITS
+-------------------------
+Mersenne Twister
+Algorithm from Makoto Matsumoto and Takuji Nishimura
+ - http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html
+ - email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)
+Packaged by Sean McCullough (banksean@gmail.com)
+
+Multiply-with-carry
+Algorithm (Alea) by Johannes Baagoe
+ - http://baagoe.com/en/RandomMusings/javascript/
+
+Combined Multiple Recursive
+Algorithm (MRG32k3a) by Pierre L'Ecuyer
+ - http://www.iro.umontreal.ca/~lecuyer/myftp/papers/combmrg2.ps
+Packaged by Johannes Baagoe
+ - http://baagoe.com/en/RandomMusings/javascript/
