@@ -1,0 +1,46 @@
+body {
+	padding: 20px;
+}
+
+.header {
+	width: 500px;
+	margin:auto;
+}
+
+.header h2 {
+	float: left;
+	padding: 30px;
+	margin-top: 70px;
+}
+
+img.random {
+	float:left;
+	margin-top:20px;
+}
+
+table {
+	width: 100%;
+}
+
+table.main {
+	margin-top: 30px;
+	border-collapse: collapse;
+}
+
+table td {
+	padding: 3px;
+}
+
+tr.even td {
+	background-color: #ffffdd;
+}
+
+tr.odd td {
+	background-color: #ffff99;
+}
+
+canvas {
+	width: 300px;
+	height: 200px;
+	margin-left:40px;
+}

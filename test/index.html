@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<title>Randomizer Tests</title>
+	<link href="test.css" media='screen' rel="stylesheet" TYPE="text/css">
+</head>
+<body>
+	<div class="header">
+		<h2>Randomizer Tests</h2>
+		<img class="random" src="random_org.png" />
+		<div style="clear:both"></div>
+	</div>
+	<table class="main">
+		<tr>
+			<td style='width: 200px'></td>
+			<th>Math.random()</th>
+			<th>Mersenne Twister</th>
+			<th>Multiply With Carry</th>
+			<th>Combined Multiple Recursive</th>
+		</tr>
+		<tr>
+			<td style='width: 200px'></td>
+			<td style="text-align:center">Javascript standard</td>
+			<td style="text-align:center">By Matsumoto &amp; Nishimura (and <a href="https://gist.github.com/300494">Sean McCullough</a>)</td>
+			<td style="text-align:center">Implementation is <a href="http://baagoe.com/en/RandomMusings/javascript/">Alea</a> by Johannes Baagoe</td>
+			<td style="text-align:center">By <a href="http://www.iro.umontreal.ca/~lecuyer/">Pierre L'Ecuyer</a>, implementation by <a href="http://baagoe.com/en/RandomMusings/javascript/">Johannes Baagoe</a></td>
+		</tr>
+		<tr class='even'>
+			<td><b>.random()</b></td>
+			<td><canvas id="default_canvas"></canvas></td>
+			<td><canvas id="MersenneTwister_canvas"></canvas></td>
+			<td><canvas id="MultiplyWithCarry_canvas"></canvas></td>
+			<td><canvas id="CombinedMultipleRecursive_canvas"></canvas></td>
+		</tr>
+		<tr class='even'>
+			<td></td>
+			<td>
+				Generated <span id="default_numbers">0</span> numbers in  <span id="default_ms">0</span>ms
+				<br />
+				Sample between 0 &amp; 1:<br /><span id="default_sample"></span>
+			</td>
+			<td>
+				Generated <span id="MersenneTwister_numbers">0</span> numbers in  <span id="MersenneTwister_ms">0</span>ms
+				<br />
+				Sample between 0 &amp; 1:<br /><span id="MersenneTwister_sample"></span>
+			</td>
+			<td>
+				Generated <span id="MultiplyWithCarry_numbers">0</span> numbers in  <span id="MultiplyWithCarry_ms">0</span>ms
+				<br />
+				Sample between 0 &amp; 1:<br /><span id="MultiplyWithCarry_sample"></span>
+			</td>
+			<td>
+				Generated <span id="CombinedMultipleRecursive_numbers">0</span> numbers in  <span id="CombinedMultipleRecursive_ms">0</span>ms
+				<br />
+				Sample between 0 &amp; 1:<br /><span id="CombinedMultipleRecursive_sample"></span>
+			</td>
+		</tr>
+		<tr class='odd'>
+			<td><b>.randomInteger()</b></td>
+			<td>
+				Generated <span id="default_numbers_int">0</span> integers in  <span id="default_ms_int">0</span>ms
+				<br />
+				Sample between 0 &amp; 100:<br/><span id="default_sample_int"></span>
+			</td>
+			<td>
+				Generated <span id="MersenneTwister_numbers_int">0</span> integers in  <span id="MersenneTwister_ms_int">0</span>ms
+				<br />
+				Sample between 0 &amp; 100:<br/><span id="MersenneTwister_sample_int"></span>
+			</td>
+			<td>
+				Generated <span id="MultiplyWithCarry_numbers_int">0</span> integers in  <span id="MultiplyWithCarry_ms_int">0</span>ms
+				<br />
+				Sample between 0 &amp; 100:<br/><span id="MultiplyWithCarry_sample_int"></span>
+			</td>
+			<td>
+				Generated <span id="CombinedMultipleRecursive_numbers_int">0</span> integers in  <span id="CombinedMultipleRecursive_ms_int">0</span>ms
+				<br />
+				Sample between 0 &amp; 100:<br/><span id="CombinedMultipleRecursive_sample_int"></span>
+			</td>
+		</tr>
+		<tr class='even'>
+			<td><b>.random()</b><br/>&nbsp;&nbsp;&nbsp;seed = 1234554321</td>
+			<td>No Seed</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td> 
+						0.7705488030333072<br />
+						0.9157095490954816<br />
+						0.8911646278575063<br />
+						0.8985830768942833<br />
+						0.4490348510444164
+						</td>
+						<td id="MersenneTwister_seeded"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td> 
+						0.8372999881394207<br />
+						0.6222107214853168<br />
+						0.2954180813394487<br />
+						0.30998755944892764<br />
+						0.21168458950705826
+						</td>
+						<td id="MultiplyWithCarry_seeded"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td> 
+						0.03376369550824165<br />
+						0.6424865152221173<br />
+						0.5994708603248<br />
+						0.23270360473543406<br />
+						0.2999202616047114
+						</td>
+						<td id="CombinedMultipleRecursive_seeded"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr class='odd'>
+			<td><b>.randomInteger()</b><br/>&nbsp;&nbsp;&nbsp;seed = 1234554321</td>
+			<td>No Seed</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>77, 92, 90, 90, 45, 65, 42</td>
+						<td id="MersenneTwister_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>84, 62, 29, 31, 21, 99, 6</td>
+						<td id="MultiplyWithCarry_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>3, 64, 60, 23, 30, 94, 99</td>
+						<td id="CombinedMultipleRecursive_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+<script type='text/javascript' src='../lib/Randomizer.js'></script>
+<script type='text/javascript' src='../lib/rng/MersenneTwister.js'></script>
+<script type='text/javascript' src='../lib/rng/MultiplyWithCarry.js'></script>
+<script type='text/javascript' src='../lib/rng/CombinedMultipleRecursive.js'></script>
+<script type='text/javascript'>
+	var SCREEN_HEIGHT = 150, SCREEN_WIDTH = 200; // different from the canvas - annoying
+
+	test_method('default');
+	test_method('MersenneTwister');
+	test_method('MultiplyWithCarry');
+	test_method('CombinedMultipleRecursive');
+
+
+	function test_method(rng_name) {
+		if(rng_name != 'default' && typeof window[rng_name] === 'undefined') {
+			return;
+		}	
+
+		var options = { RNG: rng_name};
+		if(rng_name === 'default') {
+			options = {};
+		}
+		var r = new Randomizer(options);
+
+		gen_bitmap(rng_name, r);
+
+		// check random
+		var numbers = 1000000; // 1,000,000
+		var ms = run_time(r.random, numbers);
+		document.getElementById(rng_name + "_numbers").innerHTML = "1 million";
+		document.getElementById(rng_name + "_ms").innerHTML = ms;
+
+		// check randomInteger
+		var numbers = 1000000; // 1,000,000
+		var ms = run_time(r.randomInteger, numbers);
+		document.getElementById(rng_name + "_numbers_int").innerHTML = "1 million";
+		document.getElementById(rng_name + "_ms_int").innerHTML = ms;
+
+		// get some samples
+		var floats = sample(r.random,5);
+		document.getElementById(rng_name + "_sample").innerHTML = floats.join("<br />");
+		var ints = sample(r.randomInteger,10);
+		document.getElementById(rng_name + "_sample_int").innerHTML = ints.join(", ");
+
+		// check seeds
+		if(rng_name !== 'default') {
+			r.setSeed(1234554321)
+			var floats = sample(r.random,5);
+			document.getElementById(rng_name + "_seeded").innerHTML = floats.join("<br />");
+			r.setSeed(1234554321)
+			var ints = sample(r.randomInteger,7);
+			document.getElementById(rng_name + "_seeded_int").innerHTML = ints.join(", ");
+		}
+	}
+
+	function sample(random_func, count) {
+		var rand = random_func(0,100);
+		if(count == 1) {
+			return [rand];
+		}
+		return [rand].concat(sample(random_func, count-1));
+	}
+
+	function run_time(random_func, count) {
+		var start = (new Date).getTime();
+
+		while(count--) {
+			random_func();
+		}
+
+		return (new Date).getTime() - start;
+	}
+
+	// generate bitmaps for each of the randomizers
+	function gen_bitmap(rng, r) {
+
+		var canvas = document.getElementById(rng + '_canvas');
+		var context = canvas.getContext('2d');
+		context.mozImageSmoothingEnabled=false;
+		var image = context.getImageData(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+
+		var pixels = SCREEN_WIDTH*SCREEN_HEIGHT;
+
+		var img_data = image.data;
+		while(pixels >= 0){
+			if(r.random() > .5) {
+			   img_data[4*pixels+0] = 0; // Red value
+			   img_data[4*pixels+1] = 0; // Green value
+			   img_data[4*pixels+2] = 0; // Blue value
+			   img_data[4*pixels+3] = 255; // Alpha value
+			} else {
+			   img_data[4*pixels+0] = 255; // Red value
+			   img_data[4*pixels+1] = 255; // Green value
+			   img_data[4*pixels+2] = 255; // Blue value
+			   img_data[4*pixels+3] = 255; // Alpha value
+			}
+			
+		   pixels--;
+		}
+		image.data = img_data;
+		context.putImageData(image, 0, 0);
+	}
+</script>
+</html>
