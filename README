@@ -67,3 +67,8 @@ Algorithm (MRG32k3a) by Pierre L'Ecuyer
  - http://www.iro.umontreal.ca/~lecuyer/myftp/papers/combmrg2.ps
 Packaged by Johannes Baagoe
  - http://baagoe.com/en/RandomMusings/javascript/
+
+Normal Distribution
+Box-Muller transform implemented by Sean McCullough
+http://www.cricketschirping.com/code/random_sampling_in_javascript.html
+Ported from http://www.dreamincode.net/code/snippet1446.htm

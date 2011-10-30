@@ -207,24 +207,42 @@
 			<td>
 				<table>
 					<tr><td>Expected</td><td>Actual</td></tr>
-					<tr><td>77, 92, 90, 90, 45, 65, 42</td>
-						<td id="MersenneTwister_seeded_int"></td>
+					<tr><td> 
+						9.48415023763143<br />
+						10.881197009665062<br />
+						9.596079040760005<br />
+						10.545666805783755<br />
+						8.571924360655567
+						</td>
+						<td id="MersenneTwister_seeded_normal"></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr><td>Expected</td><td>Actual</td></tr>
-					<tr><td>84, 62, 29, 31, 21, 99, 6</td>
-						<td id="MultiplyWithCarry_seeded_int"></td>
+					<tr><td> 
+						9.414594136043046<br />
+						9.393706811688528<br />
+						12.05347123981709<br />
+						9.187158889107625<br />
+						9.696011429882018
+						</td>
+						<td id="MultiplyWithCarry_seeded_normal"></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr><td>Expected</td><td>Actual</td></tr>
-					<tr><td>3, 64, 60, 23, 30, 94, 99</td>
-						<td id="CombinedMultipleRecursive_seeded_int"></td>
+					<tr><td> 
+						7.127036852631531<br />
+						7.697922816581407<br />
+						11.422235007704273<br />
+						10.155174843861676<br />
+						9.159917388676593
+						</td>
+						<td id="CombinedMultipleRecursive_seeded_normal"></td>
 					</tr>
 				</table>
 			</td>
@@ -235,24 +253,24 @@
 			<td>
 				<table>
 					<tr><td>Expected</td><td>Actual</td></tr>
-					<tr><td>77, 92, 90, 90, 45, 65, 42</td>
-						<td id="MersenneTwister_seeded_int"></td>
+					<tr><td>9, 9, 11, 10, 11, 9, 9</td>
+						<td id="MersenneTwister_seeded_normal_int"></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr><td>Expected</td><td>Actual</td></tr>
-					<tr><td>84, 62, 29, 31, 21, 99, 6</td>
-						<td id="MultiplyWithCarry_seeded_int"></td>
+					<tr><td>12, 9, 9, 12, 9, 10, 12</td>
+						<td id="MultiplyWithCarry_seeded_normal_int"></td>
 					</tr>
 				</table>
 			</td>
 			<td>
 				<table>
 					<tr><td>Expected</td><td>Actual</td></tr>
-					<tr><td>3, 64, 60, 23, 30, 94, 99</td>
-						<td id="CombinedMultipleRecursive_seeded_int"></td>
+					<tr><td>12, 7, 8, 11, 10, 9, 12</td>
+						<td id="CombinedMultipleRecursive_seeded_normal_int"></td>
 					</tr>
 				</table>
 			</td>
@@ -333,6 +351,16 @@
 		document.getElementById(rng_name + "_sample_normal_int_1").innerHTML = ints.join(", ");
 		ints = sample(function() { return r.normalInteger(8,1); },5);
 		document.getElementById(rng_name + "_sample_normal_int_2").innerHTML = ints.join(", ");
+
+		// check seeds
+		if(rng_name !== 'default') {
+			r.setSeed(1234554321)
+			var floats = sample(function() { return r.normal(10,2); },5);
+			document.getElementById(rng_name + "_seeded_normal").innerHTML = floats.join("<br />");
+			r.setSeed(1234554321)
+			var ints = sample(function() { return r.normalInteger(10,2); },7);
+			document.getElementById(rng_name + "_seeded_normal_int").innerHTML = ints.join(", ");
+		}
 	}
 
 	function sample(random_func, count) {
@@ -413,7 +441,7 @@
 			for(y=0; y < SCREEN_HEIGHT; y++) {
 				var pixel = x+y*SCREEN_WIDTH;
 				if(generated_points[mapped_x] !== undefined) {
-					var prob = generated_points[mapped_x] / (TOTAL_POINTS / 18);
+					var prob = generated_points[mapped_x] / (TOTAL_POINTS / 17);
 					var mapped_y = Math.floor(SCREEN_HEIGHT * prob);
 					var reverse_y = SCREEN_HEIGHT - y - 1;
 					if(reverse_y == mapped_y) {
