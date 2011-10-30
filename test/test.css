@@ -39,8 +39,14 @@ tr.odd td {
 	background-color: #ffff99;
 }
 
-canvas {
+canvas.static {
 	width: 300px;
 	height: 200px;
+	margin-left:40px;
+}
+
+canvas.curve {
+	width: 150px;
+	height: 100px;
 	margin-left:40px;
 }

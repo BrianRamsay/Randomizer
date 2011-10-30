@@ -27,10 +27,10 @@
 		</tr>
 		<tr class='even'>
 			<td><b>.random()</b></td>
-			<td><canvas id="default_canvas"></canvas></td>
-			<td><canvas id="MersenneTwister_canvas"></canvas></td>
-			<td><canvas id="MultiplyWithCarry_canvas"></canvas></td>
-			<td><canvas id="CombinedMultipleRecursive_canvas"></canvas></td>
+			<td><canvas class="static" id="default_canvas"></canvas></td>
+			<td><canvas class="static" id="MersenneTwister_canvas"></canvas></td>
+			<td><canvas class="static" id="MultiplyWithCarry_canvas"></canvas></td>
+			<td><canvas class="static" id="CombinedMultipleRecursive_canvas"></canvas></td>
 		</tr>
 		<tr class='even'>
 			<td></td>
@@ -152,14 +152,118 @@
 				</table>
 			</td>
 		</tr>
+		<tr class='even'>
+			<td><b>.normal()</b></td>
+			<td><canvas class="curve" id="default_canvas_normal"></canvas></td>
+			<td><canvas class="curve" id="MersenneTwister_canvas_normal"></canvas></td>
+			<td><canvas class="curve" id="MultiplyWithCarry_canvas_normal"></canvas></td>
+			<td><canvas class="curve" id="CombinedMultipleRecursive_canvas_normal"></canvas></td>
+		</tr>
+		<tr class='even'>
+			<td></td>
+			<td>
+				Generated <span id="default_numbers_normal">0</span> numbers in  <span id="default_ms_normal">0</span>ms
+			</td>
+			<td>
+				Generated <span id="MersenneTwister_numbers_normal">0</span> numbers in  <span id="MersenneTwister_ms_normal">0</span>ms
+			</td>
+			<td>
+				Generated <span id="MultiplyWithCarry_numbers_normal">0</span> numbers in  <span id="MultiplyWithCarry_ms_normal">0</span>ms
+			</td>
+			<td>
+				Generated <span id="CombinedMultipleRecursive_numbers_normal">0</span> numbers in  <span id="CombinedMultipleRecursive_ms_normal">0</span>ms
+			</td>
+		</tr>
+		<tr class='odd'>
+			<td><b>.normalInteger()</b></td>
+			<td>
+				Generated <span id="default_numbers_normal_int">0</span> integers in  <span id="default_ms_normal_int">0</span>ms
+				<br />
+				Sample mean = 10, stddev = 5:<br/><span id="default_sample_normal_int_1"></span><br />
+				Sample mean = 8, stddev = 1:<br/><span id="default_sample_normal_int_2"></span>
+			</td>
+			<td>
+				Generated <span id="MersenneTwister_numbers_normal_int">0</span> integers in  <span id="MersenneTwister_ms_normal_int">0</span>ms
+				<br />
+				Sample mean = 10, stddev = 5:<br/><span id="MersenneTwister_sample_normal_int_1"></span><br />
+				Sample mean = 8, stddev = 1:<br/><span id="MersenneTwister_sample_normal_int_2"></span>
+			</td>
+			<td>
+				Generated <span id="MultiplyWithCarry_numbers_normal_int">0</span> integers in  <span id="MultiplyWithCarry_ms_normal_int">0</span>ms
+				<br />
+				Sample mean = 10, stddev = 5:<br/><span id="MultiplyWithCarry_sample_normal_int_1"></span><br />
+				Sample mean = 8, stddev = 1:<br/><span id="MultiplyWithCarry_sample_normal_int_2"></span>
+			</td>
+			<td>
+				Generated <span id="CombinedMultipleRecursive_numbers_normal_int">0</span> integers in  <span id="CombinedMultipleRecursive_ms_normal_int">0</span>ms
+				<br />
+				Sample mean = 10, stddev = 5:<br/><span id="CombinedMultipleRecursive_sample_normal_int_1"></span><br />
+				Sample mean = 8, stddev = 1:<br/><span id="CombinedMultipleRecursive_sample_normal_int_2"></span>
+			</td>
+		</tr>
+		<tr class='even'>
+			<td><b>.normal()</b><br/>&nbsp;&nbsp;&nbsp;seed = 1234554321</td>
+			<td>No Seed</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>77, 92, 90, 90, 45, 65, 42</td>
+						<td id="MersenneTwister_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>84, 62, 29, 31, 21, 99, 6</td>
+						<td id="MultiplyWithCarry_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>3, 64, 60, 23, 30, 94, 99</td>
+						<td id="CombinedMultipleRecursive_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr class='odd'>
+			<td><b>.normalInteger()</b><br/>&nbsp;&nbsp;&nbsp;seed = 1234554321</td>
+			<td>No Seed</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>77, 92, 90, 90, 45, 65, 42</td>
+						<td id="MersenneTwister_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>84, 62, 29, 31, 21, 99, 6</td>
+						<td id="MultiplyWithCarry_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+			<td>
+				<table>
+					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>3, 64, 60, 23, 30, 94, 99</td>
+						<td id="CombinedMultipleRecursive_seeded_int"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
 	</table>
 </body>
-<script type='text/javascript' src='lib/Randomizer.js'></script>
-<script type='text/javascript' src='lib/rng/MersenneTwister.js'></script>
-<script type='text/javascript' src='lib/rng/MultiplyWithCarry.js'></script>
-<script type='text/javascript' src='lib/rng/CombinedMultipleRecursive.js'></script>
+<script type='text/javascript' src='../lib/Randomizer.js'></script>
+<script type='text/javascript' src='../lib/rng/MersenneTwister.js'></script>
+<script type='text/javascript' src='../lib/rng/MultiplyWithCarry.js'></script>
+<script type='text/javascript' src='../lib/rng/CombinedMultipleRecursive.js'></script>
 <script type='text/javascript'>
-	var SCREEN_HEIGHT = 150, SCREEN_WIDTH = 200; // different from the canvas - annoying
 
 	test_method('default');
 	test_method('MersenneTwister');
@@ -179,6 +283,10 @@
 		var r = new Randomizer(options);
 
 		gen_bitmap(rng_name, r);
+
+		var start = (new Date).getTime();
+		gen_normal_curve(rng_name, r);
+		var plot_end = (new Date).getTime() - start;
 
 		// check random
 		var numbers = 1000000; // 1,000,000
@@ -207,10 +315,28 @@
 			var ints = sample(r.randomInteger,7);
 			document.getElementById(rng_name + "_seeded_int").innerHTML = ints.join(", ");
 		}
+
+		// test normal values
+
+		// check normal
+		document.getElementById(rng_name + "_numbers_normal").innerHTML = "1 million";
+		document.getElementById(rng_name + "_ms_normal").innerHTML = plot_end;
+
+		// check normalInteger
+		var numbers = 1000000; // 1,000,000
+		var ms = run_time(function() { return r.normalInteger(3,1); }, numbers);
+		document.getElementById(rng_name + "_numbers_normal_int").innerHTML = "1 million";
+		document.getElementById(rng_name + "_ms_normal_int").innerHTML = ms;
+
+		// get some samples
+		ints = sample(function() { return r.normalInteger(10,5); },5);
+		document.getElementById(rng_name + "_sample_normal_int_1").innerHTML = ints.join(", ");
+		ints = sample(function() { return r.normalInteger(8,1); },5);
+		document.getElementById(rng_name + "_sample_normal_int_2").innerHTML = ints.join(", ");
 	}
 
 	function sample(random_func, count) {
-		var rand = random_func(0,100);
+		var rand = random_func(0,100); // args are ignored if irrelevant
 		if(count == 1) {
 			return [rand];
 		}
@@ -229,6 +355,7 @@
 
 	// generate bitmaps for each of the randomizers
 	function gen_bitmap(rng, r) {
+		var SCREEN_HEIGHT = 150, SCREEN_WIDTH = 200; // different from the canvas - annoying
 
 		var canvas = document.getElementById(rng + '_canvas');
 		var context = canvas.getContext('2d');
@@ -252,6 +379,56 @@
 			}
 			
 		   pixels--;
+		}
+		image.data = img_data;
+		context.putImageData(image, 0, 0);
+	}
+
+	function gen_normal_curve(rng, r) {
+		var SCREEN_HEIGHT = 150, SCREEN_WIDTH = 200; // different from the canvas - annoying
+
+		var TOTAL_POINTS = 1000000; // 1,000,000
+		var PSEUDO_X = 100;
+		var PSEUDO_Y = 1;
+		var generated_points = {};
+		for(i = 0; i < TOTAL_POINTS; i++) {
+			var pt = r.normalInteger(50, 10);
+			if(generated_points[pt] === undefined) {
+				generated_points[pt] = 0;
+			}
+			generated_points[pt]++;
+		}
+
+		var canvas = document.getElementById(rng + '_canvas_normal');
+		var context = canvas.getContext('2d');
+		context.mozImageSmoothingEnabled=false;
+		var image = context.getImageData(0,0,SCREEN_WIDTH, SCREEN_HEIGHT);
+
+		//console.log(generated_points);
+
+		var img_data = image.data;
+		var x_scale = SCREEN_WIDTH / PSEUDO_X;
+		for(x = 0; x < SCREEN_WIDTH; x++) {
+			var mapped_x = Math.floor(x / x_scale);
+			for(y=0; y < SCREEN_HEIGHT; y++) {
+				var pixel = x+y*SCREEN_WIDTH;
+				if(generated_points[mapped_x] !== undefined) {
+					var prob = generated_points[mapped_x] / (TOTAL_POINTS / 18);
+					var mapped_y = Math.floor(SCREEN_HEIGHT * prob);
+					var reverse_y = SCREEN_HEIGHT - y - 1;
+					if(reverse_y == mapped_y) {
+						img_data[4*pixel+0] = 0; // R
+						img_data[4*pixel+1] = 0; // G
+						img_data[4*pixel+2] = 0; // B
+						img_data[4*pixel+3] = 255; // Alpha
+						continue;
+					}
+				}
+				img_data[4*pixel+0] = 255; // R
+				img_data[4*pixel+1] = 255; // G
+				img_data[4*pixel+2] = 255; // B
+				img_data[4*pixel+3] = 255; // Alpha
+			}
 		}
 		image.data = img_data;
 		context.putImageData(image, 0, 0);
