@@ -83,7 +83,7 @@
 			<td>No Seed</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MersenneTwister_seed">getSeed BROKEN</span>)</td></tr>
 					<tr><td> 
 						0.7705488030333072<br />
 						0.9157095490954816<br />
@@ -97,7 +97,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MultiplyWithCarry_seed">getSeed BROKEN</span>)</td></tr>
 					<tr><td> 
 						0.8372999881394207<br />
 						0.6222107214853168<br />
@@ -111,7 +111,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="CombinedMultipleRecursive_seed">getSeed BROKEN</span>)</td></tr>
 					<tr><td> 
 						0.03376369550824165<br />
 						0.6424865152221173<br />
@@ -129,7 +129,7 @@
 			<td>No Seed</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MersenneTwister_seed_int">getSeed BROKEN</span>)</td></tr>
 					<tr><td>77, 92, 90, 90, 45, 65, 42</td>
 						<td id="MersenneTwister_seeded_int"></td>
 					</tr>
@@ -137,7 +137,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MultiplyWithCarry_seed_int">getSeed BROKEN</span>)</td></tr>
 					<tr><td>84, 62, 29, 31, 21, 99, 6</td>
 						<td id="MultiplyWithCarry_seeded_int"></td>
 					</tr>
@@ -145,7 +145,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="CombinedMultipleRecursive_seed_int">getSeed BROKEN</span>)</td></tr>
 					<tr><td>3, 64, 60, 23, 30, 94, 99</td>
 						<td id="CombinedMultipleRecursive_seeded_int"></td>
 					</tr>
@@ -206,7 +206,7 @@
 			<td>No Seed</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MersenneTwister_seed_normal">getSeed BROKEN</span>)</td></tr>
 					<tr><td> 
 						9.48415023763143<br />
 						10.881197009665062<br />
@@ -220,7 +220,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MultiplyWithCarry_seed_normal">getSeed BROKEN</span>)</td></tr>
 					<tr><td> 
 						9.414594136043046<br />
 						9.393706811688528<br />
@@ -234,7 +234,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="CombinedMultipleRecursive_seed_normal">getSeed BROKEN</span>)</td></tr>
 					<tr><td> 
 						7.127036852631531<br />
 						7.697922816581407<br />
@@ -252,7 +252,7 @@
 			<td>No Seed</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MersenneTwister_seed_normal_int">getSeed BROKEN</span>)</td></tr>
 					<tr><td>9, 9, 11, 10, 11, 9, 9</td>
 						<td id="MersenneTwister_seeded_normal_int"></td>
 					</tr>
@@ -260,7 +260,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="MultiplyWithCarry_seed_normal_int">getSeed BROKEN</span>)</td></tr>
 					<tr><td>12, 9, 9, 12, 9, 10, 12</td>
 						<td id="MultiplyWithCarry_seeded_normal_int"></td>
 					</tr>
@@ -268,7 +268,7 @@
 			</td>
 			<td>
 				<table>
-					<tr><td>Expected</td><td>Actual</td></tr>
+					<tr><td>Expected</td><td>Actual (<span id="CombinedMultipleRecursive_seed_normal_int">getSeed BROKEN</span>)</td></tr>
 					<tr><td>12, 7, 8, 11, 10, 9, 12</td>
 						<td id="CombinedMultipleRecursive_seeded_normal_int"></td>
 					</tr>
@@ -329,9 +329,12 @@
 			r.setSeed(1234554321)
 			var floats = sample(r.random,5);
 			document.getElementById(rng_name + "_seeded").innerHTML = floats.join("<br />");
+
 			r.setSeed(1234554321)
 			var ints = sample(r.randomInteger,7);
 			document.getElementById(rng_name + "_seeded_int").innerHTML = ints.join(", ");
+
+			check_getseed(rng_name, r);
 		}
 
 		// test normal values
@@ -379,6 +382,13 @@
 		}
 
 		return (new Date).getTime() - start;
+	}
+
+	function check_getseed(rng_name, r) {
+		document.getElementById(rng_name + "_seed").innerHTML = r.getSeed();
+		document.getElementById(rng_name + "_seed_int").innerHTML = r.getSeed();
+		document.getElementById(rng_name + "_seed_normal").innerHTML = r.getSeed();
+		document.getElementById(rng_name + "_seed_normal_int").innerHTML = r.getSeed();
 	}
 
 	// generate bitmaps for each of the randomizers
